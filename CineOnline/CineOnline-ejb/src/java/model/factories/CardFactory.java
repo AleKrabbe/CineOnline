@@ -4,11 +4,28 @@
  * and open the template in the editor.
  */
 package model.factories;
-
+import java.util.LinkedList;
+import model.entities.Card;
 /**
  *
  * @author palmeiira
  */
 public class CardFactory {
-    
+    public boolean update(Card card)
+    {
+        return true;
+    }
+    public boolean remove (Card card)
+    {
+        return true;
+    }
+    public boolean save (Card card)
+    {
+        return true;
+    }
+    public LinkedList<Card> search (String name)
+    {
+        LinkedList<Card> alfa = new LinkedList<>();
+        return alfa;
+    }    
 }
