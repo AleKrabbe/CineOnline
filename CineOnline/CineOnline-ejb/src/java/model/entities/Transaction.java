@@ -6,10 +6,12 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,6 +27,9 @@ public class Transaction implements Serializable {
     private Integer id;
     private float price;
 
+    @OneToMany
+    private LinkedList<Card> cards;
+    
     public Transaction () {}
     
     public Transaction(Integer id, float price) {
