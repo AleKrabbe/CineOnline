@@ -15,7 +15,7 @@ public class Cart {
     private float discount;
     private String cuppon;
     LinkedList<Movie> movies;
-    
+
     public Cart(float discount, String cuppon) {
         this.discount = discount;
         this.cuppon = cuppon;

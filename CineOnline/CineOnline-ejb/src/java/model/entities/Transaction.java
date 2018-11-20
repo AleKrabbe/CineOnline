@@ -26,6 +26,7 @@ public class Transaction implements Serializable {
     /* Attributes */
     private Integer id;
     private float price;
+
     @OneToMany
     private LinkedList<Card> cards;
     

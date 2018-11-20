@@ -28,10 +28,12 @@ public class RentItem implements Serializable {
     private Integer id;
     private String expDate;
     private String startDate;
+
     @OneToMany
     LinkedList<Movie> movies;
     @ManyToOne
     private User owner;
+
     public RentItem(Integer id, String expDate, String startDate) {
         this.id = id;
         this.expDate = expDate;
