@@ -1,0 +1,33 @@
+Tue Nov 20 22:03:54 AMST 2018 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Tue Nov 20 22:03:54 AMST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0167-33cb-82a7-0000430e1219 
+on database directory /home/alekrabbe/NetBeansProjects/CineOnline/DB/CineOnlineDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/usr/local/glassfish-4.1.1/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_191-b12
+user.dir=/usr/local/glassfish-4.1.1/javadb
+os.name=Linux
+os.arch=amd64
+os.version=4.15.0-39-generic
+derby.system.home=/home/alekrabbe/NetBeansProjects/CineOnline/DB
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Nov 20 22:03:56 AMST 2018:
+Shutting down instance a816c00e-0167-33cb-82a7-0000430e1219 on database directory /home/alekrabbe/NetBeansProjects/CineOnline/DB/CineOnlineDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Tue Nov 20 22:03:56 AMST 2018 Thread[DRDAConnThread_3,5,main] (DATABASE = CineOnlineDB), (DRDAID = {2}), Database 'CineOnlineDB' shutdown.
+----------------------------------------------------------------
+Tue Nov 20 22:08:59 AMST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance 560740aa-0167-33cb-82a7-0000430e1219 
+on database directory /home/alekrabbe/NetBeansProjects/CineOnline/DB/CineOnlineDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/usr/local/glassfish-4.1.1/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_191-b12
+user.dir=/usr/local/glassfish-4.1.1/javadb
+os.name=Linux
+os.arch=amd64
+os.version=4.15.0-39-generic
+derby.system.home=/home/alekrabbe/NetBeansProjects/CineOnline/DB
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Nov 20 22:55:25 AMST 2018: Shutting down Derby engine
