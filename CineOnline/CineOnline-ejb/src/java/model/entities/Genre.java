@@ -19,9 +19,17 @@ import javax.persistence.Id;
 public class Genre implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String name;
+
+    public Genre() {
+    }
+
+    public Genre(String name) {
+        this.name = name;
+    }
     
     public String getName() {
         return name;

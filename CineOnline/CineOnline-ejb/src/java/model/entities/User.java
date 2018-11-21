@@ -1,39 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedList;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author palmeiira
  */
 @Entity
-public class User implements Serializable {
+public class User extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    /* Attributes */
+    
+    @Column(name = "CPF", unique = true, nullable = false)
     private String cpf;
+    
+    @Column(name = "USERNAME", length = 20, nullable = false, unique = true)
     private String username;
-    private String bDay;
+    
+    @Column(name = "BDAY")
+    @Temporal(TemporalType.DATE)
+    private Date bDay;
+    
+    @Column(name = "EMAIL", length = 100, nullable = false, unique = true)
     private String email;
-    @OneToMany
+    
+    @ManyToMany
     private LinkedList<Card> cards;
     
     public User() {}
     
-    public User(String cpf, String username, String bDay, String email, LinkedList<Card> cards) {
+    public User(String cpf, String username, String fname, String lname, Date bDay, String email, LinkedList<Card> cards) {
+        super(fname, lname);
         this.cpf = cpf;
         this.username = username;
         this.bDay = bDay;
@@ -49,11 +53,11 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public String getbDay() {
+    public Date getbDay() {
         return bDay;
     }
 
-    public void setbDay(String bDay) {
+    public void setbDay(Date bDay) {
         this.bDay = bDay;
     }
 
@@ -79,31 +83,6 @@ public class User implements Serializable {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (cpf != null ? cpf.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the cpf fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.cpf == null && other.cpf != null) || (this.cpf != null && !this.cpf.equals(other.cpf))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model.User[ id=" + cpf + " ]";
     }
     
 }

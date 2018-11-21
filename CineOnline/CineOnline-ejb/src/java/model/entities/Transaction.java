@@ -6,12 +6,15 @@
 package model.entities;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -21,20 +24,28 @@ import javax.persistence.OneToMany;
 public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    /* Attributes */
     private Integer id;
+    
+    @Column(name = "PRICE", nullable = false, columnDefinition="Decimal(3,2) default '000.00'")
     private float price;
-
-    @OneToMany
-    private LinkedList<Card> cards;
+    
+    @Column(name = "DATE")
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    
+    @ManyToOne
+    private Card card;
     
     public Transaction () {}
     
-    public Transaction(Integer id, float price) {
-        this.id = id;
+    public Transaction(float price, Card card) {
         this.price = price;
+        this.card = card;
+        java.util.Date utilDate = new java.util.Date();
+        date = new Date(utilDate.getTime());
     }
     
     public float getPrice() {
@@ -51,6 +62,14 @@ public class Transaction implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
     }
 
     @Override
@@ -77,6 +96,7 @@ public class Transaction implements Serializable {
     public String toString() {
         return "model.Transaction[ id=" + id + " ]";
     }
+    
     /* Our methods */
     boolean charge () 
     {

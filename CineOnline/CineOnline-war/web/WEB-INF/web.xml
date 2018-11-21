@@ -6,7 +6,14 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>controller</servlet-name>
-        <url-pattern>/controller</url-pattern>
+        <url-pattern>/account</url-pattern>
+        <url-pattern>/cart</url-pattern>
+        <url-pattern>/checkout</url-pattern>
+        <url-pattern>/cinema</url-pattern>
+        <url-pattern>/error</url-pattern>
+        <url-pattern>/home</url-pattern>
+        <url-pattern>/movie</url-pattern>
+        <url-pattern>/registration</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

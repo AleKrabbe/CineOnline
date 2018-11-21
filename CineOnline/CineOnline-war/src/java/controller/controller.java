@@ -6,17 +6,24 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.factories.UserFacadeLocal;
 
 /**
  *
  * @author palmeiira
  */
 public class controller extends HttpServlet {
+
+    @EJB
+    private UserFacadeLocal userFactoryEJB;
+    
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +36,35 @@ public class controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet controller</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet controller at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+        String jsp = null;
+
+        if (request.getRequestURI().endsWith("/home")) {
+//            listaUser(request);
+            jsp = "index.jsp";
+        } else if (request.getRequestURI().endsWith("/account")) {
+            jsp = "account.jsp";
+        } else if (request.getRequestURI().endsWith("/cart")) {
+            jsp = "cart.jsp";
+        } else if (request.getRequestURI().endsWith("/checkout")) {
+            jsp = "checkout.jsp";
+        } else if (request.getRequestURI().endsWith("/cinema")) {
+            jsp = "cinema.jsp";
+        } else if (request.getRequestURI().endsWith("/error")) {
+            jsp = "error.jsp";
+        } else if (request.getRequestURI().endsWith("/movie")) {
+            jsp = "movie.jsp";
+        } else if (request.getRequestURI().endsWith("/registration")) {
+            jsp = "registration.jsp";
         }
+
+        request.getRequestDispatcher(jsp).forward(request, response);
+        
+    }
+    
+    private void listaUser(HttpServletRequest request) {
+        List registro = userFactoryEJB.findAll();
+        request.setAttribute("list", registro);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

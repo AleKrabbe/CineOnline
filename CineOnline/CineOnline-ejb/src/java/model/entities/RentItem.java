@@ -6,13 +6,17 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedList;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,37 +26,48 @@ import javax.persistence.OneToMany;
 public class RentItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    /* Attributes */
     private Integer id;
-    private String expDate;
-    private String startDate;
+    
+    @Column(name = "EXP_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date expDate;
+    
+    @Column(name = "START_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date startDate;
 
     @OneToMany
-    LinkedList<Movie> movies;
+    private LinkedList<Movie> movies;
+    
     @ManyToOne
     private User owner;
 
-    public RentItem(Integer id, String expDate, String startDate) {
-        this.id = id;
+    public RentItem() {
+    }  
+
+    public RentItem(Date expDate, Date startDate, LinkedList<Movie> movies, User owner) {
         this.expDate = expDate;
         this.startDate = startDate;
+        this.movies = movies;
+        this.owner = owner;
     }
 
-    public String getExpDate() {
+    public Date getExpDate() {
         return expDate;
     }
 
-    public void setExpDate(String expDate) {
+    public void setExpDate(Date expDate) {
         this.expDate = expDate;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
     
@@ -62,6 +77,22 @@ public class RentItem implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public LinkedList<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(LinkedList<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     @Override

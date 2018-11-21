@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.entities;
 
 import java.util.LinkedList;
@@ -12,9 +7,11 @@ import java.util.LinkedList;
  * @author palmeiira
  */
 public class Cart {
+    
     private float discount;
     private String cuppon;
     LinkedList<Movie> movies;
+    LinkedList<Transaction> transactions;
 
     public Cart(float discount, String cuppon) {
         this.discount = discount;
@@ -40,7 +37,13 @@ public class Cart {
     public boolean addMovie (Movie movie) {
         return true;
     }
+    
     public boolean removeMovie (Movie movie){
         return true;
     }
+    
+    public void newTransaction(Card c){
+        transactions.add(new Transaction());
+    }
+    
 }

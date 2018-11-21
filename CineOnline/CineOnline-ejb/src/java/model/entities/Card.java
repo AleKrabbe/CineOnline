@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -19,18 +16,18 @@ import javax.persistence.Id;
 public class Card implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    /* Attributes */
-    private String id;
     private String number;
-    private String expDate;
+    
+    @Column(name = "EXP_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date expDate;
 
     public Card() {
     }
     
-    public Card(String id, String number, String expDate) {
-        this.id = id;
+    public Card(String number, Date expDate) {
         this.number = number;
         this.expDate = expDate;
     }
@@ -43,26 +40,18 @@ public class Card implements Serializable {
         this.number = number;
     }
 
-    public String getExpDate() {
+    public Date getExpDate() {
         return expDate;
     }
 
-    public void setExpDate(String expDate) {
+    public void setExpDate(Date expDate) {
         this.expDate = expDate;
-    }
-    
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (number != null ? number.hashCode() : 0);
         return hash;
     }
 
@@ -73,7 +62,7 @@ public class Card implements Serializable {
             return false;
         }
         Card other = (Card) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.number == null && other.number != null) || (this.number != null && !this.number.equals(other.number))) {
             return false;
         }
         return true;
@@ -81,7 +70,7 @@ public class Card implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Card[ id=" + id + " ]";
+        return "model.Card[ id=" + number + " ]";
     }
     
 }

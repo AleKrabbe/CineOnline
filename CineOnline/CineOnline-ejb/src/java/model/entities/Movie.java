@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedList;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,28 +22,43 @@ import javax.persistence.OneToOne;
 public class Movie implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
+    @Column(name = "TITLE", length = 100, nullable = false)
     private String title;
-    private String duration;
-    private String releaseDate;
+    
+    @Column(name = "DURATION", nullable = false)
+    private int duration;
+    
+    @Column(name = "RATING", columnDefinition="Decimal(1,1) default '0.0'")
+    private float rating;
+    
+    @Column(name = "RELEASE_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date releaseDate;
+    
     @OneToOne
     private Director director;
-    @OneToMany
+    
+    @ManyToMany
     private LinkedList<Actor> cast;
-    private LinkedList<String> awards;
+    
     @OneToMany
+    private LinkedList<Award> awards;
+    
+    @ManyToMany
     private LinkedList<Genre> genres;
-    public Integer getId() {
-        return id;
-    }
+    
     public Movie(){}
-    public Movie(Integer id, String title, String duration, String releaseDate, Director director, LinkedList<Actor> cast, LinkedList<String> awards, LinkedList<Genre> genres) {
-        this.id = id;
+    
+    public Movie(String title, int duration, Date releaseDate, float rating, Director director, LinkedList<Actor> cast, LinkedList<Award> awards, LinkedList<Genre> genres) {
         this.title = title;
         this.duration = duration;
         this.releaseDate = releaseDate;
+        this.rating = rating;
         this.director = director;
         this.cast = cast;
         this.awards = awards;
@@ -58,19 +73,19 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    public String getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -90,12 +105,16 @@ public class Movie implements Serializable {
         this.cast = cast;
     }
 
-    public LinkedList<String> getAwards() {
+    public LinkedList<Award> getAwards() {
         return awards;
     }
 
-    public void setAwards(LinkedList<String> awards) {
+    public void setAwards(LinkedList<Award> awards) {
         this.awards = awards;
+    }
+    
+    public void addAward(Award award) {
+        this.awards.add(award);
     }
 
     public LinkedList<Genre> getGenres() {
@@ -108,6 +127,18 @@ public class Movie implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+    
+    public Integer getId() {
+        return id;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     @Override
