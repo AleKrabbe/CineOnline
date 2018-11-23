@@ -19,4 +19,4 @@ Divisão do repositório:
 O repositório tem três pastas principais:   
 CineOnline: é a pasta raiz do projeto, pode-se construir o mesmo a partir dela.  
 DB: guarda os dados no banco de dados que construimos com o JPA.  
-Documentos: mostra a documentação entregue nas etapas 01 e 02.  
+Diagramas: mostra a documentação entregue nas etapas 01 e 02.  
