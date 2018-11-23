@@ -12,7 +12,8 @@ Pedro Barbosa :  Responsável pelo diagrama de implantação.
 Thomaz Palmeira : Participou da documentação no diagrama de classes,  é também o responsável juntamente com Alexandre Krabbe pela parte de controller, model (enfoque nas entities)  e view do projeto.  
 
 Tecnologias utilizadas:   
-HTML, CSS, JAVAEE ( e seus pormenores )  
+HTML, CSS, JAVAEE ( e seus pormenores ) e PostGreSQL.
+Talvez iremos utilizar JavaScript também.
 
 Divisão do repositório:  
 O repositório tem duas pastas principais:   
