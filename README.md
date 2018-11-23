@@ -3,7 +3,7 @@ Trabalho de PPROGWEB
 
 Grupo 01  
 
-Membros:
+Membros:  
 Alexandre Krabbe: Participou da documentação no diagrama de classes, responsável pelo diagrama UWE, é também o responsável juntamente com Thomaz Palmeira pela parte de controller, model (com enfoque nos enterprisebeans) e view do projeto.  
 
 Micaella Reani : Responsável pelo diagrama de implantação.  
