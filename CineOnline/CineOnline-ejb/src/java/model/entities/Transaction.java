@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,6 +22,7 @@ import javax.persistence.TemporalType;
  * @author palmeiira
  */
 @Entity
+@Table(name = "\"TRANSACTION\"")
 public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,8 +31,8 @@ public class Transaction implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
-    @Column(name = "PRICE", nullable = false, columnDefinition="Decimal(3,2) default '000.00'")
-    private float price;
+    @Column(name = "PRICE", nullable = false)
+    private float price = 0.00f;
     
     @Column(name = "DATE")
     @Temporal(TemporalType.DATE)

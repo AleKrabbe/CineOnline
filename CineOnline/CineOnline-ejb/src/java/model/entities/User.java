@@ -2,10 +2,11 @@ package model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -14,6 +15,7 @@ import javax.persistence.TemporalType;
  * @author palmeiira
  */
 @Entity
+@Table(name = "USR")
 public class User extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,11 +34,11 @@ public class User extends Person implements Serializable {
     private String email;
     
     @ManyToMany
-    private LinkedList<Card> cards;
+    private List<Card> cards;
     
     public User() {}
     
-    public User(String cpf, String username, String fname, String lname, Date bDay, String email, LinkedList<Card> cards) {
+    public User(String cpf, String username, String fname, String lname, Date bDay, String email, List<Card> cards) {
         super(fname, lname);
         this.cpf = cpf;
         this.username = username;
@@ -69,11 +71,11 @@ public class User extends Person implements Serializable {
         this.email = email;
     }
 
-    public LinkedList<Card> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 
-    public void setCards(LinkedList<Card> cards) {
+    public void setCards(List<Card> cards) {
         this.cards = cards;
     }
     

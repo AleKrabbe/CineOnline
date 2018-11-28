@@ -7,7 +7,7 @@ package model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +40,7 @@ public class RentItem implements Serializable {
     private Date startDate;
 
     @OneToMany
-    private LinkedList<Movie> movies;
+    private List<Movie> movies;
     
     @ManyToOne
     private User owner;
@@ -48,7 +48,7 @@ public class RentItem implements Serializable {
     public RentItem() {
     }  
 
-    public RentItem(Date expDate, Date startDate, LinkedList<Movie> movies, User owner) {
+    public RentItem(Date expDate, Date startDate, List<Movie> movies, User owner) {
         this.expDate = expDate;
         this.startDate = startDate;
         this.movies = movies;
@@ -79,11 +79,11 @@ public class RentItem implements Serializable {
         this.id = id;
     }
 
-    public LinkedList<Movie> getMovies() {
+    public List<Movie> getMovies() {
         return movies;
     }
 
-    public void setMovies(LinkedList<Movie> movies) {
+    public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
 

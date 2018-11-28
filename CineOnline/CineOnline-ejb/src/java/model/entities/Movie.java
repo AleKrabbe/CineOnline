@@ -2,7 +2,7 @@ package model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,8 +33,8 @@ public class Movie implements Serializable {
     @Column(name = "DURATION", nullable = false)
     private int duration;
     
-    @Column(name = "RATING", columnDefinition="Decimal(1,1) default '0.0'")
-    private float rating;
+    @Column(name = "RATING")
+    private float rating = 0.0f;
     
     @Column(name = "RELEASE_DATE")
     @Temporal(TemporalType.DATE)
@@ -44,17 +44,17 @@ public class Movie implements Serializable {
     private Director director;
     
     @ManyToMany
-    private LinkedList<Actor> cast;
+    private List<Actor> cast;
     
     @OneToMany
-    private LinkedList<Award> awards;
+    private List<Award> awards;
     
     @ManyToMany
-    private LinkedList<Genre> genres;
+    private List<Genre> genres;
     
     public Movie(){}
     
-    public Movie(String title, int duration, Date releaseDate, float rating, Director director, LinkedList<Actor> cast, LinkedList<Award> awards, LinkedList<Genre> genres) {
+    public Movie(String title, int duration, Date releaseDate, float rating, Director director, List<Actor> cast, List<Award> awards, List<Genre> genres) {
         this.title = title;
         this.duration = duration;
         this.releaseDate = releaseDate;
@@ -97,19 +97,19 @@ public class Movie implements Serializable {
         this.director = director;
     }
 
-    public LinkedList<Actor> getCast() {
+    public List<Actor> getCast() {
         return cast;
     }
 
-    public void setCast(LinkedList<Actor> cast) {
+    public void setCast(List<Actor> cast) {
         this.cast = cast;
     }
 
-    public LinkedList<Award> getAwards() {
+    public List<Award> getAwards() {
         return awards;
     }
 
-    public void setAwards(LinkedList<Award> awards) {
+    public void setAwards(List<Award> awards) {
         this.awards = awards;
     }
     
@@ -117,11 +117,11 @@ public class Movie implements Serializable {
         this.awards.add(award);
     }
 
-    public LinkedList<Genre> getGenres() {
+    public List<Genre> getGenres() {
         return genres;
     }
 
-    public void setGenres(LinkedList<Genre> genres) {
+    public void setGenres(List<Genre> genres) {
         this.genres = genres;
     }
 

@@ -40,7 +40,7 @@ public class controller extends HttpServlet {
         String jsp = null;
 
         if (request.getRequestURI().endsWith("/home")) {
-//            listaUser(request);
+            listaUser(request);
             jsp = "index.jsp";
         } else if (request.getRequestURI().endsWith("/account")) {
             jsp = "account.jsp";
@@ -64,7 +64,9 @@ public class controller extends HttpServlet {
     
     private void listaUser(HttpServletRequest request) {
         List registro = userFactoryEJB.findAll();
-        request.setAttribute("list", registro);
+        request.setAttribute("lista", registro);
+        
+        System.out.println(registro.size());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -23,7 +23,7 @@ public class Award implements Serializable {
     @Column(name = "NAME", length = 100, nullable = false, unique = true)
     private String name;
     
-    @Column(name = "YEAR", nullable = false)
+    @Column(name = "\"YEAR\"", nullable = false)
     private int year;
 
     public Award() {

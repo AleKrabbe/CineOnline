@@ -1,6 +1,6 @@
 package model.entities;
 
-import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -10,8 +10,8 @@ public class Cart {
     
     private float discount;
     private String cuppon;
-    LinkedList<Movie> movies;
-    LinkedList<Transaction> transactions;
+    List<Movie> movies;
+    List<Transaction> transactions;
 
     public Cart(float discount, String cuppon) {
         this.discount = discount;
