@@ -10,7 +10,6 @@
         <url-pattern>/cart</url-pattern>
         <url-pattern>/checkout</url-pattern>
         <url-pattern>/cinema</url-pattern>
-        <url-pattern>/error</url-pattern>
         <url-pattern>/home</url-pattern>
         <url-pattern>/movie</url-pattern>
         <url-pattern>/registration</url-pattern>
@@ -21,6 +20,10 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>home</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
 </web-app>

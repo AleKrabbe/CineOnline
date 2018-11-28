@@ -8,53 +8,55 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
-<!DOCTYPE HTML>
+<!doctype html>
 
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="estilo.css"/>
-        <title>Cadastro de Usuários</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="plugins/fontawesome/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/home.css"/>
+
+        <script src="plugins/fontawesome/js/all.js"></script>
+        <title>CineOnline</title>
     </head>
     <body>
-        <h1>Cadastro de Usuários</h1>
+        <%@include file="includes/nav.html" %>
 
-        <c:choose>
-            <c:when test="${empty lista}">
-                <p>- N&atilde;o h&aacute; usuários registrados </p>
-            </c:when>
-            <c:otherwise>
+        <div class="album py-5">
+            <div class="container">
+                <div class="row">
 
-                <table>
-                    <caption>Tabela com usuários cadastrados</caption>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <!--<th>Login</th>-->
-                        </tr>
-                    </thead>
-                    <tbody>
+                    <c:choose>
+                        <c:when test="${empty lista}">
+                            <p>- N&atilde;o h&aacute; filmes registrados </p>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach var="movie" items="${lista}">
 
-                        <c:forEach var="movie" items="${lista}">
-                            <tr>
-                                <td><img src="${pageContext.request.contextPath}/media/poster/${movie.poster}"></td>
-                                <!--<td>${user.rating} </td>-->
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">Total de contatos: ${fn:length(lista)}</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                                <div class="col-md-3">
+                                    <div class="card mb-4 shadow-sm">
+                                        <img class="image card-img-top" src="media/poster/${movie.poster}" data-holder-rendered="true">
+                                        <div class="play-btn">
+                                            <i class="play-btn-ico fas fa-play"></i>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">${movie.title}</p>
+                                            <small class="text-muted">${movie.duration} mins</small>
+                                        </div>
+                                    </div>
+                                </div>                               
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
 
-            </c:otherwise>
-        </c:choose>
+                </div>
+            </div><!--container-->
+        </div>
 
-        <p>
-            <a href="${pageContext.request.contextPath}/novo">Cadastrar novo Usuário</a>
-            <a href="${pageContext.request.contextPath}/inicio">Voltar à página inicial</a>
-        </p>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>
 </html>

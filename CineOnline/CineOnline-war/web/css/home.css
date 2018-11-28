@@ -1,0 +1,49 @@
+/* 
+    Created on : 28/11/2018, 17:35:41
+    Author     : Alexandre Krabbe
+*/
+
+#nav-btn {
+    display: inline-block;
+    color: white;
+    font-size: 2em;
+    margin: 0 0.5em;
+}
+
+.card-img-top {
+    display: block;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.play-btn {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+.card:hover .image {
+    opacity: 0.3;
+}
+
+.card:hover .play-btn {
+    opacity: 1;
+}
+
+.play-btn-ico {
+    color: #666666;
+    font-size: 3em;
+    cursor: pointer
+}
+
+.card-body p {
+    margin-bottom: 0;
+}

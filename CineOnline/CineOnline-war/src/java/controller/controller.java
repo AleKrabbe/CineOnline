@@ -39,12 +39,11 @@ public class controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-        String jsp = "index.jsp";
+        String jsp = null;
+        listaUser(request);
+        jsp = "index.jsp";
 
-        if (request.getRequestURI().endsWith("/home")) {
-            listaUser(request);
-            jsp = "index.jsp";
-        } else if (request.getRequestURI().endsWith("/account")) {
+        if (request.getRequestURI().endsWith("/account")) {
             jsp = "account.jsp";
         } else if (request.getRequestURI().endsWith("/cart")) {
             jsp = "cart.jsp";
