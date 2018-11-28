@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -24,7 +25,7 @@ public class Movie implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
     @Column(name = "TITLE", length = 100, nullable = false)
@@ -39,6 +40,12 @@ public class Movie implements Serializable {
     @Column(name = "RELEASE_DATE")
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
+    
+    @Column(name="POSTER")
+    private String poster;
+    
+    @Column(name="TRAILER")
+    private String trailer;
     
     @OneToOne
     private Director director;
@@ -139,6 +146,22 @@ public class Movie implements Serializable {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
     }
 
     @Override

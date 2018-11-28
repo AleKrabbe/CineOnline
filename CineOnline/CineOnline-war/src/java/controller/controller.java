@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.factories.MovieFacadeLocal;
 import model.factories.UserFacadeLocal;
 
 /**
@@ -21,9 +22,10 @@ import model.factories.UserFacadeLocal;
 public class controller extends HttpServlet {
 
     @EJB
+    private MovieFacadeLocal movieFactoryEJB;
+
+    @EJB
     private UserFacadeLocal userFactoryEJB;
-    
-    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +39,7 @@ public class controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-        String jsp = null;
+        String jsp = "index.jsp";
 
         if (request.getRequestURI().endsWith("/home")) {
             listaUser(request);
@@ -63,7 +65,7 @@ public class controller extends HttpServlet {
     }
     
     private void listaUser(HttpServletRequest request) {
-        List registro = userFactoryEJB.findAll();
+        List registro = movieFactoryEJB.findAll();//userFactoryEJB.findAll();
         request.setAttribute("lista", registro);
         
         System.out.println(registro.size());

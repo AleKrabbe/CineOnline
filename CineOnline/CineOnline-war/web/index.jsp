@@ -30,15 +30,15 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Login</th>
+                            <!--<th>Login</th>-->
                         </tr>
                     </thead>
                     <tbody>
 
-                        <c:forEach var="user" items="${lista}">
+                        <c:forEach var="movie" items="${lista}">
                             <tr>
-                                <td>${user.username} </td>
-                                <td>${user.email} </td>
+                                <td><img src="${pageContext.request.contextPath}/media/poster/${movie.poster}"></td>
+                                <!--<td>${user.rating} </td>-->
                             </tr>
                         </c:forEach>
                     </tbody>

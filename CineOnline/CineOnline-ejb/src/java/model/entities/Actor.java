@@ -42,4 +42,5 @@ public class Actor extends Person implements Serializable {
     {
         return true;
     }
+
 }

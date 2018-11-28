@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Person.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/RentItem.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/User.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Movie.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Award.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Director.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Cart.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Card.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Transaction.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Genre.java</file>
-            <file>file:/home/alekrabbe/NetBeansProjects/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Actor.java</file>
+            <file>file:/F:/Alexandre%20Krabbe/Documents/GitHub/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Actor.java</file>
+            <file>file:/F:/Alexandre%20Krabbe/Documents/GitHub/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/User.java</file>
+            <file>file:/F:/Alexandre%20Krabbe/Documents/GitHub/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Person.java</file>
+            <file>file:/F:/Alexandre%20Krabbe/Documents/GitHub/CineOnline/CineOnline/CineOnline-ejb/src/java/model/entities/Director.java</file>
         </group>
     </open-files>
 </project-private>
