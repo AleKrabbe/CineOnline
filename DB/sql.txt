@@ -1,0 +1,53 @@
+INSERT INTO ROOT.GENRE ("NAME") VALUES ('Ação'),('Comédia'),('Terror'),('Suspense'),('Animação'),('Infantil'),('Drama'),('Documentário'),('Romance'),('Guerra'),('Ficção Científica'),('Espião'),('Policial'),('Comédia Romântica');
+
+
+INSERT INTO ROOT.ACTOR ("FNAME", "LNAME") VALUES ('Mark','Ruffalo'), ('Jennifer','Lawrance'),('Tom','Cruise'),('Leonardo','DiCapprio'),('Jennifer','Lopez'),('Cleo','Pires'),('Samuel','Jackson'),('Adam','Sandler'),('Keanu','Reaves'),('Wagner','Moura'), ('Alicia','Vikander'),('Brad','Pitt'),('Angelina','Jolie'),('Colin','Farrel'),('Bruce','Willis'),('Robin','Wright'),('Gal','Gadot'),('Amber','Heard'),('Eddie','Murphy'),('Chris','Pratt'),('Bradley','Cooper'),('Lady','Gaga'),('Emma','Stone'),('Will','Smith'),('Robert','Downey Jr'),('Zoe','Saldana'),('Johnny','Deep'),('Keira','Knightley'),('Orlando','Bloom'),('Meryl','Streep'),('Emily','Blunt'),('Matt','Damon'),('Ryan','Goslin'),('Charlize','Theron'),('Tom','Hardy'),('Emma','Watson'),('Amy','Addams'),('Henry','Cavill'),('Ben','Affleck'),('Mila','Kunis'),('Scarlett','Johansson'),('Gwyneth','Patrol'),('Anne','Hathaway'),('Christian','Bale');
+
+
+INSERT INTO ROOT.DIRECTOR ("FNAME", "LNAME") VALUES ('Steven','Spielberg'), ('Martin','Scorsese'),('Christopher','Nolan'),('Alfred','Hitchcock'),('James','Cameron'),('Joe','Russo'),('Anthony','Russo'),('Quentin','Tarantino'),('Guy','Ritchie'),('David','Fincher'),('George','Lucas'), ('Peter','Jackson'),('Ridley','Scott'),('Joss','Weadon'),('Tim','Burton'),  ('Zack','Snyder'), ('Gore', 'Verbinski'), ('Todd','Phillips'), ('Martin','Campbell'), ('Sam','Mendes'), ('Jonh','Krasinski'), ('Carlos','Saldanha'), ('John','Lasseter'), ('Michael','Bay'),('Brett','Ratner'), ('Brian','De Palma'), ('John','Woo'), ('Edgar','Wright');
+
+
+INSERT INTO ROOT.USR ("FNAME", "LNAME", "CPF", "USERNAME", "BDAY", "EMAIL") VALUES ('Thomaz','Palmeira','027.890.332-00','palmeiira','1997-05-03','palmeiirat@gmail.com'),('Alexandre','Krabbe','111.222.333-00','alekrabbe','1994-05-14','alekrabbe@gmail.com'), ('Isabela','Lacerda','111.222.333-01','isa','1996-07-29','larissa.yukimi@aluno.ufms.br'),('Larissa','Yukimi','111.222.333-02','lyukimi','1996-01-19','isalacerda@teste.com'),('Jane','Eleuterio','111.222.333-03','jane','1996-01-19','jane@facom.ufms.br'), ('Nádia','Margareth','111.222.333-04','nadiam','1962-04-17','nadia@teste.com');
+
+
+INSERT INTO ROOT.AWARD ("NAME","YEAR") VALUES ('Oscar - Melhor Filme', 1), ('Oscar - Melhor Ator', 1),('Oscar - Melhor Atriz', 1),('Oscar - Melhor Atriz Coadjuvante', 1),('Oscar - Melhor Ator Coadjuvante', 1),('Oscar - Melhor Roteiro', 1),('Oscar - Melhor Animação', 1), ('Melhor Fotografia', 1);
+
+
+INSERT INTO ROOT.CARD ("NUMBER", "EXP_DATE", "VALIDATOR") VALUES ('5555666677778884','2019-10-11', 122),('4012001037141112','2020-12-19', 444),('376449047333005','2023-01-11', 331),('36490102462661','2025-07-30', 222),('6370950000000005','2019-07-13', 752),('6062825624254001','2018-12-26', 766),('6362970000457013','2018-10-11', 977),('376411112222331','2019-03-05', 666),('5078601800003247449','2021-03-11', 455),('3841001111222233334','2024-05-13', 988);
+
+
+INSERT INTO ROOT.USR_CARD ("CARDS_NUMBER", "USER_ID") VALUES ('5555666677778884',2), ('36490102462661',1),('4012001037141112',1),('376449047333005',2),('5078601800003247449',2),('6370950000000005',2),('6362970000457013',6),('5078601800003247449',3),('3841001111222233334',1),('36490102462661',3),('4012001037141112',3),('5555666677778884',1),('376449047333005',5),('5555666677778884',5),('376411112222331',4);
+
+
+INSERT INTO ROOT.MOVIE ("DURATION","POSTER","RATING","RELEASE_DATE","TITLE","TRAILER","DIRECTOR_ID") VALUES (120,'ligadajustica.jpg',0,'2017-11-16','Liga da Justiça','ligadajustica.mp4',16),
+(143,'vingadores.jpg',0,'2012-04-27','Vingadores','vingadores.mp4',14),
+(142,'vingadores2.jpg',0,'2015-05-23','Vingadores: Era de Ultron','vingadores2.jpg',14),
+(280,'vingadores3.jpg',0,'2018-04-26','Vingadores: Guerra Infinita','vingadores3.jpg',6),
+(91,'umlugarsilencioso.jpg',0,'2018-04-05','Um Lugar Silencioso','umlugarsilencioso.mp4',21),
+(81,'aeradogelo.jpg',0,'2002-03-22','A Era do Gelo','aeradogelo.mp4',22),
+(105,'aeradogelo2.jpg',0,'2006-03-31','A Era do Gelo 2','aeradogelo2.mp4',22),
+(81,'toystory.jpg',0,'1995-12-22','Toy Story','toystory.mp4',23),
+(110,'mi.jpg',0,'1996-07-12','Missão Impossível','mi.jpg',26),
+(123,'mi2.jpg',0,'2000-05-24','Missão Impossível 2','mi2.mp4',27),
+(144,'transformers.jpg',0,'2007-07-18','Transformers','transformers.mp4',24),
+(116,'carros.jpg',0,'2006-06-09','Carros','carros.mp4',23),
+(143,'piratas1.jpg',0,'2003-08-29','Piratas do Caribe: A Maldição do Pérola Negra','piratas1.mp4',17),
+(151,'piratas2.jpg',0,'2006-07-21','Piratas do Caribe: O Báu da Morte','piratas2.mp4',17),
+(169,'piratas3.jpg',0,'2007-05-25','Piratas do Caribe: No fim do Mundo','piratas3.mp4',17),
+(126,'oatirador.jpg',0,'2007-03-23','O Atirador','oatirador.mp4',25),
+(98,'horadorush.jpg',0,'1998-09-18','A hora do Rush','horadorush.mp4',25),
+(140,'batman1.jpg',0,'2005-06-17','Batman: Begins','batman1.mp4',3),
+(153,'batman2.jpg',0,'2008-07-18','Batman: O cavaleiro das Trevas','batman2.mp4',3),
+(165,'batman3.jpg',0,'2012-07-27','Batman: O cavaleiro das Trevas Ressurge','batman3.mp4',3),
+(117,'300.jpg',0,'2007-03-09','300','300.mp4',16),
+(235,'senhordosaneis1.jpg',0,'2002-01-01','Senhor dos Anéis','senhordosaneis.mp4',12),
+(125,'starwarsIV.jpg',0,'1977-11-18','Star Wars: Episodio IV','starwars.mp4',11),
+(113,'scottpilgrim.jpg',0,'2010-11-05','Scott Pilgrim: Contra o Mundo','scottpilgrim.mp4',28),
+(108,'sebebernaocase.jpg',0,'2009-06-05','Se Beber, Não Case!','sebebernaocase.mp4',18),
+(101,'tartarugasninjas.jpg',0,'2014-08-08','As Tartarugas Ninjas','tartarugasninjas.mp4',24),
+(182,'ohobbit.jpg',0,'2012-12-14','O Hobbit','ohobbit.mp4',12),
+(187,'osoitoodiados.jpg',0,'2016-01-07','Os 8 Odiados','osoitoodiados.mp4',8),
+(178,'pulpfiction.jpg',0,'1995-02-18','Pulp Fiction','pulpfiction.mp4',8),
+(165,'django.jpg',0,'2013-01-18','Django','django.mp4',8),
+(145,'cassinoroyale.jpg',0,'2006-11-14','007: Cassino Royale','cassinoroyale.mp4',19),
+(143,'skyfall.jpg',0,'2012-10-26','007: Skyfall','skyfall.mp4',20);
