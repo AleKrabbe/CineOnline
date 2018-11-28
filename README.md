@@ -4,12 +4,12 @@ Trabalho de PPROGWEB
 __Grupo 01__  
 
 Membros:  
-__Alexandre Krabbe__: Participou da documentação no diagrama de classes, responsável pelo diagrama UWE, é também o responsável juntamente com Thomaz Palmeira pela parte de controller, model (com enfoque nos enterprisebeans) e view do projeto.  
+__Alexandre Krabbe__: Participou da documentação, diagrama de classes, responsável pelo diagrama UWE, é também o responsável juntamente com Thomaz Palmeira pela parte de controller, model (com enfoque nos enterprisebeans) e view do projeto.  
 
-__Micaella Reani__ : Responsável pelo diagrama de implantação.  
-__Pedro Barbosa__ :  Responsável pelo diagrama de implantação.  
+__Micaella Reani__ : Participou da documentação e foi responsável pelo diagrama de implantação.  
+__Pedro Barbosa__ :  Participou da documentação e foi responsável pelo diagrama de implantação.    
 
-__Thomaz Palmeira__ : Participou da documentação no diagrama de classes,  é também o responsável juntamente com Alexandre Krabbe pela parte de controller, model (enfoque nas entities)  e view do projeto.  
+__Thomaz Palmeira__ : Participou da documentação, diagrama de classes,  é também o responsável juntamente com Alexandre Krabbe pela parte de controller, model (enfoque nas entities)  e view do projeto.  
 
 Tecnologias utilizadas:   
 __HTML, CSS, JAVAEE__ ( e seus pormenores ) e __PostGreSQL__.
