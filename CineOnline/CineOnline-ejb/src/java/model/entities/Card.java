@@ -23,6 +23,9 @@ public class Card implements Serializable {
     @Column(name = "EXP_DATE")
     @Temporal(TemporalType.DATE)
     private Date expDate;
+    
+    @Column(name = "VALIDATOR")
+    private int validator;
 
     public Card() {
     }
@@ -46,6 +49,14 @@ public class Card implements Serializable {
 
     public void setExpDate(Date expDate) {
         this.expDate = expDate;
+    }
+
+    public int getValidator() {
+        return validator;
+    }
+
+    public void setValidator(int validator) {
+        this.validator = validator;
     }
 
     @Override
