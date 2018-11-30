@@ -3,13 +3,6 @@
     Author     : Alexandre Krabbe
 */
 
-#nav-btn {
-    display: inline-block;
-    color: white;
-    font-size: 2em;
-    margin: 0 0.5em;
-}
-
 .card-img-top {
     display: block;
     width: 100%;
@@ -38,7 +31,7 @@
     opacity: 1;
 }
 
-.play-btn-ico {
+.add-cart-btn-ico {
     color: #666666;
     font-size: 3em;
     cursor: pointer

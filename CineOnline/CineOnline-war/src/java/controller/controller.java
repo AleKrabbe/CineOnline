@@ -7,11 +7,17 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.factories.CartBeanLocal;
 import model.factories.MovieFacadeLocal;
 import model.factories.UserFacadeLocal;
 
@@ -21,11 +27,13 @@ import model.factories.UserFacadeLocal;
  */
 public class controller extends HttpServlet {
 
+    CartBeanLocal cartBean = lookupCartBeanLocal();
+
     @EJB
     private MovieFacadeLocal movieFactoryEJB;
 
     @EJB
-    private UserFacadeLocal userFactoryEJB;
+    private UserFacadeLocal userFactoryEJB;  
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,15 +48,17 @@ public class controller extends HttpServlet {
             throws ServletException, IOException {
             
         String jsp = null;
-        listaUser(request);
+        listMovies(request);
         jsp = "index.jsp";
-
+        
+        request.getSession().setAttribute("cart", cartBean.getCart());
+        
         if (request.getRequestURI().endsWith("/account")) {
             jsp = "account.jsp";
-        } else if (request.getRequestURI().endsWith("/cart")) {
-            jsp = "cart.jsp";
         } else if (request.getRequestURI().endsWith("/checkout")) {
             jsp = "checkout.jsp";
+        } else if (request.getRequestURI().endsWith("/cart")) {
+            jsp = "cart.jsp";
         } else if (request.getRequestURI().endsWith("/cinema")) {
             jsp = "cinema.jsp";
         } else if (request.getRequestURI().endsWith("/error")) {
@@ -63,11 +73,9 @@ public class controller extends HttpServlet {
         
     }
     
-    private void listaUser(HttpServletRequest request) {
-        List registro = movieFactoryEJB.findAll();//userFactoryEJB.findAll();
+    private void listMovies(HttpServletRequest request) {
+        List registro = movieFactoryEJB.findAll();
         request.setAttribute("lista", registro);
-        
-        System.out.println(registro.size());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -96,6 +104,17 @@ public class controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        if (request.getParameter("movie_id") != null){
+            int movie_id = Integer.parseInt(request.getParameter("movie_id"));
+            cartBean.addMovie(movie_id);
+        }
+        
+        if (request.getParameter("delete_movie_id") != null){
+            int movie_id = Integer.parseInt(request.getParameter("delete_movie_id"));
+            cartBean.removeMovie(movie_id);
+        }
+        
         processRequest(request, response);
     }
 
@@ -108,5 +127,15 @@ public class controller extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private CartBeanLocal lookupCartBeanLocal() {
+        try {
+            Context c = new InitialContext();
+            return (CartBeanLocal) c.lookup("java:global/CineOnline/CineOnline-ejb/CartBean!model.factories.CartBeanLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
 
 }

@@ -1,0 +1,18 @@
+/* 
+    Created on : 29/11/2018, 23:15:41
+    Author     : Alexandre Krabbe
+*/
+
+.subtotal-row {
+    text-align: right;
+    padding-right: 5em !important;
+}
+
+.cart-container{
+    margin: 2em auto;
+}
+
+.table{
+    border-bottom: 2px solid #212529;
+}
+

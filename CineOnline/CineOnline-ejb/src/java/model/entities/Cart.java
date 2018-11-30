@@ -1,5 +1,6 @@
 package model.entities;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,12 +11,14 @@ public class Cart {
     
     private float discount;
     private String cuppon;
+    private float subTotal;
     List<Movie> movies;
     List<Transaction> transactions;
 
-    public Cart(float discount, String cuppon) {
-        this.discount = discount;
-        this.cuppon = cuppon;
+    public Cart() {
+        subTotal = 0f;
+        movies = new LinkedList<>();
+        transactions = new LinkedList<>();
     }
     
     public float getDiscount() {
@@ -33,17 +36,36 @@ public class Cart {
     public void setCuppon(String cuppon) {
         this.cuppon = cuppon;
     }
+
+    public float getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(float subTotal) {
+        this.subTotal = subTotal;
+    }
     
     public boolean addMovie (Movie movie) {
-        return true;
+        subTotal += movie.getPrice();
+        return movies.add(movie);
     }
     
     public boolean removeMovie (Movie movie){
-        return true;
+        subTotal -= movie.getPrice();
+        return movies.remove(movie);
     }
     
     public void newTransaction(Card c){
         transactions.add(new Transaction());
+    }
+    
+    public List getMovies(){
+        return movies;
+    }
+
+    @Override
+    public String toString() {
+        return movies.toString();
     }
     
 }

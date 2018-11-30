@@ -46,6 +46,9 @@ public class Movie implements Serializable {
     @Column(name="TRAILER")
     private String trailer;
     
+    @Column(name="PRICE", nullable = false)
+    private float price;
+    
     @OneToOne
     private Director director;
     
@@ -161,6 +164,14 @@ public class Movie implements Serializable {
 
     public void setTrailer(String trailer) {
         this.trailer = trailer;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     @Override

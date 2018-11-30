@@ -15,14 +15,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
         <link href="plugins/fontawesome/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/esquema.css"/>
         <link rel="stylesheet" type="text/css" href="css/home.css"/>
 
         <script src="plugins/fontawesome/js/all.js"></script>
         <title>CineOnline</title>
     </head>
     <body>
-        <%@include file="includes/nav.html" %>
+        <jsp:useBean id="cart" scope="session" type="model.entities.Cart" />
+        <%@include file="includes/nav.jsp" %>
 
         <div class="album py-5">
             <div class="container">
@@ -34,19 +37,25 @@
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="movie" items="${lista}">
-
-                                <div class="col-md-3">
-                                    <div class="card mb-4 shadow-sm">
-                                        <img class="image card-img-top" src="media/poster/${movie.poster}" data-holder-rendered="true">
-                                        <div class="play-btn">
-                                            <i class="play-btn-ico fas fa-play"></i>
+                                <c:if test="${not fn:contains(sessionScope.cart.movies, movie)}">
+                                    <div class="col-md-3">
+                                        <div class="card mb-4 shadow-sm">
+                                            <img class="image card-img-top" src="media/poster/${movie.poster}" data-holder-rendered="true">
+                                            <div class="play-btn">
+                                                <form method="post">
+                                                    <input type="hidden" value="${movie.id}" name="movie_id">
+                                                    <button type="submit" class="transparent-btn">
+                                                        <i class="add-cart-btn-ico fas fa-cart-arrow-down"></i>
+                                                    </button>
+                                                </form>                                            
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text">${movie.title}</p>
+                                                <small class="text-muted">${movie.duration} mins</small>
+                                            </div>
                                         </div>
-                                        <div class="card-body">
-                                            <p class="card-text">${movie.title}</p>
-                                            <small class="text-muted">${movie.duration} mins</small>
-                                        </div>
-                                    </div>
-                                </div>                               
+                                    </div> 
+                                </c:if>
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>

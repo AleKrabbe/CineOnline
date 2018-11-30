@@ -1,0 +1,42 @@
+/* 
+    Created on : 29/11/2018, 22:51:49
+    Author     : Alexandre Krabbe
+*/
+
+#nav-btn {
+    display: inline-block;
+    color: white;
+    font-size: 2em;
+    margin: 0 0.5em;
+}
+
+.transparent-btn {
+    background: transparent;
+    border: none !important;
+    cursor: pointer;
+}
+
+.shoppingcart{
+    width:40px;
+    height:40px;
+    position:relative;
+    font-family: 'Comfortaa', cursive;
+}
+
+.cartitems {
+    border-radius: 50px;
+    width: 50%;
+    height: 50%;
+    line-height: 120%;
+    text-align: center;
+    color:#fff;
+    font-size:50%;
+    background-color:#e74c3c;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(10%,10%);
+    -moz-transform:translate(10%,10%);
+    transform:translate(10%,10%);
+    padding:0 12%;
+}

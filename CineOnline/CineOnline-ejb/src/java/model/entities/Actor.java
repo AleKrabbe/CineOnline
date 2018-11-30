@@ -1,6 +1,7 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -18,6 +19,7 @@ public class Actor extends Person implements Serializable {
     private List<Award> awards;
 
     public Actor() {
+        awards = new LinkedList<>();
     }
 
     public Actor(String fname, String lname, List<Award> awards) {
