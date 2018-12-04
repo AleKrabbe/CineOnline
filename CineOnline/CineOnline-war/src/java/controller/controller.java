@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.factories.CartBeanLocal;
+import model.factories.MovieBeanLocal;
 import model.factories.MovieFacadeLocal;
+import model.factories.UserBeanLocal;
 import model.factories.UserFacadeLocal;
 
 /**
@@ -27,13 +29,20 @@ import model.factories.UserFacadeLocal;
  */
 public class controller extends HttpServlet {
 
+    UserBeanLocal userBean = lookupUserBeanLocal();
+
     CartBeanLocal cartBean = lookupCartBeanLocal();
+
+    @EJB
+    private MovieBeanLocal movieBean;
 
     @EJB
     private MovieFacadeLocal movieFactoryEJB;
 
     @EJB
-    private UserFacadeLocal userFactoryEJB;  
+    private UserFacadeLocal userFactoryEJB;
+
+    private boolean shouldRedirect;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,13 +55,14 @@ public class controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
+
         String jsp = null;
         listMovies(request);
         jsp = "index.jsp";
-        
+        shouldRedirect = false;
+
         request.getSession().setAttribute("cart", cartBean.getCart());
-        
+
         if (request.getRequestURI().endsWith("/account")) {
             jsp = "account.jsp";
         } else if (request.getRequestURI().endsWith("/checkout")) {
@@ -64,13 +74,29 @@ public class controller extends HttpServlet {
         } else if (request.getRequestURI().endsWith("/error")) {
             jsp = "error.jsp";
         } else if (request.getRequestURI().endsWith("/movie")) {
-            jsp = "movie.jsp";
+            if (extractMovieIdAndSetBean(request)) {
+                jsp = "movie.jsp";
+            } else {
+                response.sendRedirect(request.getContextPath() + "/");
+                shouldRedirect = true;
+            }
         } else if (request.getRequestURI().endsWith("/registration")) {
             jsp = "registration.jsp";
         }
 
-        request.getRequestDispatcher(jsp).forward(request, response);
-        
+        if (!shouldRedirect) {
+            request.getRequestDispatcher(jsp).forward(request, response);
+        }
+
+    }
+
+    private boolean extractMovieIdAndSetBean(HttpServletRequest request) {
+        if (request.getParameter("id") != null) {
+            movieBean.setMovie(Integer.parseInt(request.getParameter("id")));
+            request.getSession().setAttribute("movie", movieBean.getMovie());
+            return true;
+        }
+        return false;
     }
     
     private void listMovies(HttpServletRequest request) {
@@ -104,17 +130,17 @@ public class controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        if (request.getParameter("movie_id") != null){
+
+        if (request.getParameter("movie_id") != null) {
             int movie_id = Integer.parseInt(request.getParameter("movie_id"));
             cartBean.addMovie(movie_id);
         }
-        
-        if (request.getParameter("delete_movie_id") != null){
+
+        if (request.getParameter("delete_movie_id") != null) {
             int movie_id = Integer.parseInt(request.getParameter("delete_movie_id"));
             cartBean.removeMovie(movie_id);
         }
-        
+
         processRequest(request, response);
     }
 
@@ -132,6 +158,16 @@ public class controller extends HttpServlet {
         try {
             Context c = new InitialContext();
             return (CartBeanLocal) c.lookup("java:global/CineOnline/CineOnline-ejb/CartBean!model.factories.CartBeanLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private UserBeanLocal lookupUserBeanLocal() {
+        try {
+            Context c = new InitialContext();
+            return (UserBeanLocal) c.lookup("java:global/CineOnline/CineOnline-ejb/UserBean!model.factories.UserBeanLocal");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

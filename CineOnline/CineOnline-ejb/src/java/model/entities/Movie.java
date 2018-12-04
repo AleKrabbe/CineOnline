@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -49,6 +50,9 @@ public class Movie implements Serializable {
     @Column(name="PRICE", nullable = false)
     private float price;
     
+    @Column(name="SINOPSYS", columnDefinition = "VARCHAR(1000)")
+    private String sinopsys;
+    
     @OneToOne
     private Director director;
     
@@ -62,7 +66,7 @@ public class Movie implements Serializable {
     private List<Genre> genres;
     
     public Movie(){}
-    
+
     public Movie(String title, int duration, Date releaseDate, float rating, Director director, List<Actor> cast, List<Award> awards, List<Genre> genres) {
         this.title = title;
         this.duration = duration;
@@ -174,13 +178,21 @@ public class Movie implements Serializable {
         this.price = price;
     }
 
+    public String getSinopsys() {
+        return sinopsys;
+    }
+
+    public void setSinopsys(String sinopsys) {
+        this.sinopsys = sinopsys;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

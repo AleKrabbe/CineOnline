@@ -52,7 +52,7 @@
                                 <c:otherwise>
                                     <c:forEach var="movie" items="${sessionScope.cart.movies}">
                                         <tr>
-                                            <td>${movie.title}</td>
+                                            <td><a href="movie?id=${movie.id}">${movie.title}</a></td>
                                             <td>${movie.price}</td>
                                             <td>
                                                 <form method="post">
