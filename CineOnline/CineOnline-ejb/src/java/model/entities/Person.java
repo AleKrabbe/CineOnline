@@ -25,7 +25,10 @@ public abstract class Person implements Serializable {
     @Column(name = "LNAME", length = 100, nullable = false)
     protected String lname;
     
-    public Person(){}
+    public Person(){
+        fname = "";
+        lname = "";
+    }
     
     public Person(String fname, String lname) {
         this.fname = fname;

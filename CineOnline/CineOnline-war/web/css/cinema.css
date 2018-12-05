@@ -1,0 +1,30 @@
+/* 
+    Created on : 05/12/2018, 00:44:55
+    Author     : Alexandre Krabbe
+*/
+body {
+    background: black;
+    overflow: hidden;
+}
+
+nav {
+    position: fixed !important;
+    width: 100% !important;
+    z-index: 100 !important;
+}
+
+.cinema-movie-title {
+    font-size: 1.5em;
+    color: white;
+}
+
+.video-container {
+    overflow: hidden;
+}
+
+video {
+    max-height: 100vh;
+    width: 100%;
+    background-color: black;
+    object-fit: cover;
+}

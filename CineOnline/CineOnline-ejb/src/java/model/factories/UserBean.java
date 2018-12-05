@@ -12,8 +12,15 @@ public class UserBean implements UserBeanLocal {
 
     private User user;
 
+    public UserBean() {
+        user = null;
+    }
+    
     @Override
     public User getUser() {
+        if (user == null) {
+            return new User();
+        }
         return user;
     }
 

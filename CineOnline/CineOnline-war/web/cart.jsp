@@ -29,7 +29,7 @@
         <div class="container cart-container">
             <div class="row">
                 <div class="col">
-                    <h2>Cart</h2>
+                    <h2>Carrinho</h2>
                 </div>
             </div>
             <div class="row">                
@@ -37,16 +37,16 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Remove</th>
+                                <th scope="col">Título</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Remover</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:choose>
                                 <c:when test="${empty sessionScope.cart.movies}">
                                     <tr>
-                                        <td colspan="3">No items in the cart</td>
+                                        <td colspan="3">Carrinho vazio.</td>
                                     </tr>
                                 </c:when>
                                 <c:otherwise>
@@ -68,7 +68,7 @@
                             </c:choose>
                             <tr>
                                 <td></td>
-                                <td>U$ ${sessionScope.cart.subTotal} (subtotal)</td>
+                                <td>R$ ${sessionScope.cart.subTotal} (subtotal)</td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -80,8 +80,8 @@
                     <div class="float-right">
                         <form method="post" class="form-inline">
                             <div class="form-group mb-2">
-                                <input id="cuppon" type="text" name="cuppon" class="form-control" placeholder="discount code">
-                                <input type="submit" class="btn btn-success ml-1" value="Apply">
+                                <input id="cuppon" type="text" name="cuppon" class="form-control" placeholder="código promocional">
+                                <input type="submit" class="btn btn-success ml-1" value="Aplicar">
                             </div>                        
                         </form>
                     </div>                    
@@ -90,10 +90,8 @@
             <div class="row">
                 <div class="col">
                     <div class="float-right">
-                        <form method="post">
-                            <input type="reset" value="clear" name="clear" class="btn btn-dark">
-                            <input type="submit" value="checkout" name="checkout" class="btn btn-success ml-auto">
-                        </form>                        
+                        <a href="#" class="btn btn-dark">Limpar</a>
+                        <a href="checkout" class="btn btn-success ml-auto">Pagar</a>                    
                     </div>
                 </div>
             </div>

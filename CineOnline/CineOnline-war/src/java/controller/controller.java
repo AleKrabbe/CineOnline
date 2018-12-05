@@ -41,7 +41,7 @@ public class controller extends HttpServlet {
 
     @EJB
     private UserFacadeLocal userFactoryEJB;
-
+    
     private boolean shouldRedirect;
 
     /**
@@ -55,13 +55,14 @@ public class controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String jsp = null;
-        listMovies(request);
-        jsp = "index.jsp";
+        
+        String jsp = "index.jsp";
+        listMovies(request);        
         shouldRedirect = false;
 
         request.getSession().setAttribute("cart", cartBean.getCart());
+        userBean.setUser(userFactoryEJB.find(2));
+        request.getSession().setAttribute("user", userBean.getUser());
 
         if (request.getRequestURI().endsWith("/account")) {
             jsp = "account.jsp";
@@ -70,7 +71,12 @@ public class controller extends HttpServlet {
         } else if (request.getRequestURI().endsWith("/cart")) {
             jsp = "cart.jsp";
         } else if (request.getRequestURI().endsWith("/cinema")) {
-            jsp = "cinema.jsp";
+            if (extractMovieIdAndSetBean(request)) {
+                jsp = "cinema.jsp";
+            } else {
+                response.sendRedirect(request.getContextPath() + "/");
+                shouldRedirect = true;
+            }
         } else if (request.getRequestURI().endsWith("/error")) {
             jsp = "error.jsp";
         } else if (request.getRequestURI().endsWith("/movie")) {

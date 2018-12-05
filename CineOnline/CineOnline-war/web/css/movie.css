@@ -1,0 +1,24 @@
+.video-wrapper {
+    overflow: hidden;
+}
+
+video {
+    max-height: 500px;
+    width: 100%;
+    background-color: black;
+    object-fit: cover;
+}
+
+.movie-details-poster {
+    max-width: 300px;
+    height: auto;
+}
+
+.movie-details-container p{
+    text-align: justify;
+}
+
+.movie-play-btn {
+    margin-top: 2.5em;
+}
+

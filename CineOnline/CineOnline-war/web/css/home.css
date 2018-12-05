@@ -3,6 +3,36 @@
     Author     : Alexandre Krabbe
 */
 
+.search {
+    margin: 0 auto 3em;
+}
+
+.search input {
+    border-radius: 3em;
+    height: 2.5em;
+    font-size: 1.3em;
+}
+
+#search-result-paragraph {
+    text-align: center;
+}
+
+.search input::-webkit-input-placeholder {
+   text-align: center;
+}
+
+.search input:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+.search input::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+.search input:-ms-input-placeholder {  
+   text-align: center; 
+}
+
 .card-img-top {
     display: block;
     width: 100%;
@@ -37,6 +67,41 @@
     cursor: pointer
 }
 
+.card-body {
+    margin: 0 0.5em !important;
+}
+
 .card-body p {
     margin-bottom: 0;
+}
+
+#error-container {
+    margin: 0 auto;
+}
+
+.notfound {
+    margin: 0 auto;
+}
+
+.notfound .notfound-404 h1 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 186px;
+  font-weight: 900;
+  margin: 0px;
+  text-transform: uppercase;
+  background: url('../img/text.png');
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: cover;
+  background-position: center;
+}
+
+.notfound h2 {
+    text-align: center;
+    font-size: 1.6em;
+    color: #666666;
+}
+
+.rating {
+    text-align: end;
 }

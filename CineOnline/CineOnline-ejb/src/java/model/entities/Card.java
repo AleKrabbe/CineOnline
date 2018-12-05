@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -26,6 +27,12 @@ public class Card implements Serializable {
     
     @Column(name = "VALIDATOR")
     private int validator;
+    
+    @Column(name = "FLAG", nullable = false)
+    private int flag;
+    
+    @Transient
+    private String endsWith;
 
     public Card() {
     }
@@ -33,6 +40,7 @@ public class Card implements Serializable {
     public Card(String number, Date expDate) {
         this.number = number;
         this.expDate = expDate;
+        setEndsWith(number);
     }
     
     public String getNumber() {
@@ -41,6 +49,7 @@ public class Card implements Serializable {
 
     public void setNumber(String number) {
         this.number = number;
+        setEndsWith(number);
     }
 
     public Date getExpDate() {
@@ -57,6 +66,14 @@ public class Card implements Serializable {
 
     public void setValidator(int validator) {
         this.validator = validator;
+    }
+
+    public String getEndsWith() {
+        return endsWith;
+    }
+
+    public void setEndsWith(String number) {
+        this.endsWith = this.number.substring(8, 12);
     }
 
     @Override

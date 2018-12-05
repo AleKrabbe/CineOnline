@@ -3,11 +3,47 @@
     Author     : Alexandre Krabbe
 */
 
-#nav-btn {
+body {
+    overflow-y:scroll;
+}
+
+.container{
+    margin: 3em auto;
+}
+
+.nav-btn {
     display: inline-block;
     color: white;
     font-size: 2em;
     margin: 0 0.5em;
+    text-decoration: none;
+}
+
+.nav-btn span{
+    font-size: 0.4em;
+    margin-left: 0.3em;
+    display: inline-block;
+    position: relative;
+    top: 2px;    
+}
+
+.nav-btn:hover {
+    text-decoration: none;
+    color: #333333;
+}
+
+.nav-item-bkg {
+    border-radius: 100px;
+    background: rgba(255,255,255,0);
+    margin: 0 0.5em;
+    transition: background .25s ease-in-out;
+   -moz-transition: background .25s ease-in-out;
+   -webkit-transition: background .25s ease-in-out;
+}
+
+.nav-item-bkg:hover {
+    background: rgba(255,255,255,0.9);
+    color: black !important;
 }
 
 .transparent-btn {
