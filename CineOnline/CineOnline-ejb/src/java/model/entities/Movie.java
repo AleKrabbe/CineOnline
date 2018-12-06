@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,8 +17,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 /**
- *
+ * This entity represents a Movie.
+ * It contains all the data of a movie stored in the database.
+ * 
  * @author palmeiira
  */
 @Entity
@@ -54,16 +58,16 @@ public class Movie implements Serializable {
     @Column(name="SINOPSYS", columnDefinition = "VARCHAR(1000)")
     private String sinopsys;
     
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Director director;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Actor> cast;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Award> awards;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Genre> genres;
     
     public Movie(){}
@@ -94,7 +98,12 @@ public class Movie implements Serializable {
     public void setDuration(int duration) {
         this.duration = duration;
     }
-
+    /**
+     * 
+     * @return movie's release date on dd / mm / yyyy format.
+     * This method grabs the release date on Java DB Date format and converts
+     * it into dd / mm / yyyy format.
+     */
     public String getReleaseDate() {
         DateFormat df = new SimpleDateFormat("dd / MM / yyyy");
         return df.format(releaseDate);

@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 /**
- *
+ * This entity represents an Actor.
+ * It's used as a part of the cast of an movie displayed on the movie page
+ * TODO: Search by actor.
+ * 
  * @author palmeiira
  */
 @Entity
@@ -15,7 +19,7 @@ public class Actor extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Award> awards;
 
     public Actor() {

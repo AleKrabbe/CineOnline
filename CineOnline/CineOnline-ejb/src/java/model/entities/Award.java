@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
+ * This empty represents an Award.
+ * It is used as an extra information about the movie and its displayed on the
+ * movie page
+ * 
  * @author alekrabbe
  */
 @Entity

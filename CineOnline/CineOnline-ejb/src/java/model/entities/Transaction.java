@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
+ * Transaction entity is used to gather all data upon the commitment of a rent.
+ * Transations are related to Carts and should be instantiated by the time the rent 
+ * is confirmed.
+ * 
  * @author palmeiira
  */
 @Entity
@@ -38,7 +42,7 @@ public class Transaction implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Card card;
     
     public Transaction () {}

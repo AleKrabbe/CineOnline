@@ -10,16 +10,21 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
+ * RentItem entity represents a single item from a possible Rent.
+ * The idea of this entity is to allow us to easily gather information
+ * about a single object rented, suck as expiration date or start date.
+ * 
  * @author palmeiira
  */
 @Entity
@@ -39,19 +44,19 @@ public class RentItem implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date startDate;
 
-    @OneToMany
-    private List<Movie> movies;
+    @OneToOne(fetch = FetchType.EAGER)
+    private Movie movie;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User owner;
 
     public RentItem() {
     }  
 
-    public RentItem(Date expDate, Date startDate, List<Movie> movies, User owner) {
+    public RentItem(Date expDate, Date startDate, Movie movie, User owner) {
         this.expDate = expDate;
         this.startDate = startDate;
-        this.movies = movies;
+        this.movie = movie;
         this.owner = owner;
     }
 
@@ -79,12 +84,12 @@ public class RentItem implements Serializable {
         this.id = id;
     }
 
-    public List<Movie> getMovies() {
-        return movies;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
+    public void setMovies(Movie movie) {
+        this.movie = movie;
     }
 
     public User getOwner() {

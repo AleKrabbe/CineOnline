@@ -8,8 +8,8 @@ $(document).ready(function () {
 
         for (var i = 0; i < movies.length; i++) {
             var resultTitle = fuzzy_match(movies[i].childNodes[1].childNodes[5].childNodes[1].innerText, $(this).val());
-            if (resultTitle != '') {
-                movies[i].childNodes[1].childNodes[5].childNodes[1].innerHTML = resultTitle;
+            if (resultTitle) {
+               // movies[i].childNodes[1].childNodes[5].childNodes[1].innerHTML = resultTitle;
                 movies[i].style.display = "block";
                 count += 1;
             } else {
@@ -53,9 +53,9 @@ $(document).ready(function () {
         // return an empty string to indicate no match
         if (search_position != search.length)
         {
-            return '';
+            return false;
         }
-        return tokens.join('');
+        return true;
         ;
     }
 });

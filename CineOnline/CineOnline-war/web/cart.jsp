@@ -53,7 +53,7 @@
                                     <c:forEach var="movie" items="${sessionScope.cart.movies}">
                                         <tr>
                                             <td><a href="movie?id=${movie.id}">${movie.title}</a></td>
-                                            <td>${movie.price}</td>
+                                            <td>R$ ${movie.price}</td>
                                             <td>
                                                 <form method="post">
                                                     <input type="hidden" value="${movie.id}" name="delete_movie_id">
@@ -67,8 +67,8 @@
                                 </c:otherwise>
                             </c:choose>
                             <tr>
-                                <td></td>
-                                <td>R$ ${sessionScope.cart.subTotal} (subtotal)</td>
+                                <td class="text-right pr-0">Total =</td>
+                                <td class="pl-0">&nbsp;R$ ${sessionScope.cart.total}</td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -90,8 +90,18 @@
             <div class="row">
                 <div class="col">
                     <div class="float-right">
-                        <a href="#" class="btn btn-dark">Limpar</a>
-                        <a href="checkout" class="btn btn-success ml-auto">Pagar</a>                    
+                        <form method="post">
+                            <c:choose>
+                                <c:when test="${empty cart.movies}">
+                                    <input type="submit" value="Limpar" name="clear-cart" class="btn btn-dark" disabled="true">
+                                    <input type="submit" value="Pagar" name="proceed-to-checkout" class="btn btn-success ml-auto" disabled="true">
+                                </c:when>
+                                <c:otherwise>
+                                    <input type="submit" value="Limpar" name="clear-cart" class="btn btn-dark">
+                                    <input type="submit" value="Pagar" name="proceed-to-checkout" class="btn btn-success ml-auto">
+                                </c:otherwise>
+                            </c:choose>                            
+                        </form>
                     </div>
                 </div>
             </div>

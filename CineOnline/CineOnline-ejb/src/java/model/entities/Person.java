@@ -7,7 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
+ * Entity Person is an abstract class created only for purposes
+ * of readbility of coding.
+ * It has no actions on the software.
+ * 
  * @author palmeiira
  */
 @javax.persistence.MappedSuperclass
@@ -49,6 +52,14 @@ public abstract class Person implements Serializable {
 
     public void setLname(String lname) {
         this.lname = lname;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
     
         @Override

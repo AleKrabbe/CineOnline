@@ -27,7 +27,12 @@ public class MovieBean implements MovieBeanLocal {
     public Movie getMovie() {
         return movie;
     }
-
+    /**
+     * 
+     * @param movieId 
+     * This method use it's parameter to fetch a movie on the database and then
+     * sets the movie object as this movie from the database.
+     */
     @Override
     public void setMovie(int movieId) {
         this.movie = movieFacade.find(movieId);

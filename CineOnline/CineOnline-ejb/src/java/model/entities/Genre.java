@@ -11,8 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 /**
- *
+ * This entity represents a movie genre.
+ * TODO: Search by Genre.
+ * s
  * @author palmeiira
  */
 @Entity

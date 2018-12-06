@@ -6,6 +6,7 @@
 package model.factories;
 
 import javax.ejb.Local;
+import model.entities.Card;
 import model.entities.User;
 
 /**
@@ -18,5 +19,7 @@ public interface UserBeanLocal {
     public void setUser(User user);
 
     public User getUser();
+    
+    public Card getCardByIndex(int index);
     
 }

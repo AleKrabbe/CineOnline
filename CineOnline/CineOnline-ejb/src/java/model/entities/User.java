@@ -2,23 +2,23 @@ package model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import model.factories.CardFacadeLocal;
+
 
 /**
- *
+ * User Entity represents CineOnline's users.
+ * It gathers all registration info and stores it in the database.
+ * Its possible to see the usage of such info at the home screen, where we can
+ * see a user's name or at the payment screen where all user's card are brought
+ * to interface for users's commodity.
+ * 
  * @author palmeiira
  */
 @Entity
@@ -40,7 +40,7 @@ public class User extends Person implements Serializable {
     @Column(name = "EMAIL", length = 100, nullable = false, unique = true)
     private String email;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Card> cards;
     
     public User() {

@@ -6,7 +6,9 @@
 package model.factories;
 
 import javax.ejb.Local;
+import model.entities.Card;
 import model.entities.Cart;
+import model.entities.User;
 
 /**
  *
@@ -20,5 +22,11 @@ public interface CartBeanLocal{
     public boolean removeMovie(int id);
     
     public Cart getCart(); 
+
+    void clearCart();
+
+    void newTransaction(Card card, float value);
+
+    boolean finish(User user);
     
 }

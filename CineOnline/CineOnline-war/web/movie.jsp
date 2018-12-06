@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,10 +33,43 @@
                     <h1>${movie.title}</h1>
                     <p>${movie.sinopsys}</p>
                     <hr>
-                    <p><strong> Elenco: </strong>Henry Cavill, Ben Affleck, Gal Gadot.</p>
-                    <p><strong> Direção: </strong>Zack Snyder.</p>                    
+                    <p><strong> Elenco: </strong>
+                        <c:forEach var = "i" begin = "0" end = "${fn:length(movie.cast)-1}">
+                            <c:choose>
+                                <c:when test="${i == fn:length(movie.cast)-1}">
+                                    ${movie.cast[i].fname} ${movie.cast[i].fname}
+                                </c:when>
+                                <c:otherwise>
+                                    ${movie.cast[i].fname} ${movie.cast[i].fname},
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </p>
+                    <p><strong> Direção: </strong>${movie.director.fname} ${movie.director.lname}</p>                    
                     <p><strong> Lançamento: </strong>${movie.releaseDate}</p>
                     <p><strong> Duração: </strong>${movie.duration} min</p>
+
+                    <c:if test="${!empty movie.awards}">
+                        <p><strong> Oscar: </strong>
+                            <c:forEach var="award" items="${movie.awards}">
+                                ${award.name}
+                            </c:forEach>
+                        </p>
+                    </c:if>
+
+                    <p><strong> Gênero: </strong>
+                        <c:forEach var = "i" begin = "0" end = "${fn:length(movie.genres)-1}">
+                            <c:choose>
+                                <c:when test="${i == fn:length(movie.genres)-1}">
+                                    ${movie.genres[i].name}
+                                </c:when>
+                                <c:otherwise>
+                                    ${movie.genres[i].name}, 
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </p>
+
                     <p><strong> Avaliação: </strong>${movie.rating} <i class="fas fa-star"></i></p>
                     <div class="container my-0">
                         <div class="row float-right movie-play-btn">

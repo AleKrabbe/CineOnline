@@ -8,9 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-
 /**
- *
+ * Cards is a Entity that represent a User cards.
+ * Alongside with an user's budget, it's used to
+ * pay the rents of users.
+ * 
  * @author palmeiira
  */
 @Entity
@@ -20,6 +22,9 @@ public class Card implements Serializable {
     
     @Id
     private String number;
+    
+    @Column(name = "ENDS_WITH")
+    private String endsWith;
     
     @Column(name = "EXP_DATE")
     @Temporal(TemporalType.DATE)
@@ -31,8 +36,6 @@ public class Card implements Serializable {
     @Column(name = "FLAG", nullable = false)
     private int flag;
     
-    @Transient
-    private String endsWith;
 
     public Card() {
     }
@@ -40,13 +43,17 @@ public class Card implements Serializable {
     public Card(String number, Date expDate) {
         this.number = number;
         this.expDate = expDate;
-        setEndsWith(number);
     }
     
     public String getNumber() {
         return number;
     }
-
+   /**
+     * 
+     * @param number
+     * @return the number of the card and it's last 4 digits witch are stored into
+     * endswith attribute.
+     */
     public void setNumber(String number) {
         this.number = number;
         setEndsWith(number);
@@ -73,7 +80,15 @@ public class Card implements Serializable {
     }
 
     public void setEndsWith(String number) {
-        this.endsWith = this.number.substring(8, 12);
+        this.endsWith = number;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     @Override
